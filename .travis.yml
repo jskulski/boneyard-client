@@ -8,4 +8,4 @@ before_script:
   - npm install -g gulp
 script: gulp
 after_success:
-  - gulp deploy  
+  - git subtree push --prefix dist origin gh-pages
