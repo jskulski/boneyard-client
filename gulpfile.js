@@ -160,6 +160,11 @@ gulp.task('serve', ['styles'], function () {
   gulp.watch(['app/images/**/*'], reload);
 });
 
+gulp.task('deploy', ['default'], function() {
+    return gulp.src('dist')
+      .pipe($.subtree());
+});
+
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], function () {
   browserSync({
