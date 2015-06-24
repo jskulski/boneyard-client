@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
+    "babel": "^5.6.5",
     "browser-sync": "^1.3.0",
     "del": "^1.1.0",
     "gulp": "^3.8.5",
@@ -22,19 +23,17 @@
     "gulp-uglify": "^1.0.1",
     "gulp-uncss": "^1.0.0",
     "gulp-useref": "^1.0.1",
-    "jasmine-core": "^2.3.4",
-    "jest-cli": "^0.4.13",
     "jshint-stylish": "^1.0.0",
+    "mocha": "^2.2.5",
     "opn": "^1.0.0",
     "psi": "^1.0.4",
     "require-dir": "^0.1.0",
-    "run-sequence": "^1.0.1"
+    "run-sequence": "^1.0.1",
+    "testdom": "^1.0.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
   "private": true,
-  "scripts": {
-    "test": "jest"
-  }
+  "scripts": {}
 }
