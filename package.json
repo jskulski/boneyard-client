@@ -39,5 +39,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
   }
 }
