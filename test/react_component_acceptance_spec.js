@@ -1,12 +1,5 @@
 var should = require('chai').should(); // nb. call func
 
-describe('test harness', function () {
-  it('should work correctly', function () {
-    true.should.equal(true);
-  });
-});
-
-
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
@@ -14,9 +7,12 @@ var Card = require('../app/scripts/Card');
 
 describe('Card Component', function () {
 
-  it('can be rendered into the docuemnt', function () {
+  before('rendered into the document', function () {
+
+    this.expectedBody = "This is the body";
+
     var renderedComponent = TestUtils.renderIntoDocument(
-      <Card />
+      <Card body={this.expectedBody}/>
     );
 
     var inputComponent = TestUtils.findRenderedDOMComponentWithTag(
@@ -29,6 +25,15 @@ describe('Card Component', function () {
 
   it('should have a textarea', function () {
     this.inputElement.tagName.should.equal('TEXTAREA');
-  })
+  });
+
+  it('should display the current card data', function () {
+    this.inputElement.value.should.equal(this.expectedBody)
+  });
+
+  //it('sends a save request to the server when the content is changed', function () {
+  //
+  //});
 
 });
+

@@ -4,7 +4,7 @@ var Card = React.createClass({
   render: function() {
     return (
       <label>
-        <textarea />
+        <textarea defaultValue={this.props.body} />
       </label>
     );
   }
