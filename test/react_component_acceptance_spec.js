@@ -3,7 +3,7 @@ var should = require('chai').should(); // nb. call func
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-var Card = require('../app/scripts/Card');
+var Card = require('../src/Card');
 
 describe('Card Component', function () {
 
@@ -31,8 +31,14 @@ describe('Card Component', function () {
     this.inputElement.value.should.equal(this.expectedBody)
   });
 
+  //it('should change the value on change', function () {
+  //  var expectedText = 'Hello, world';
+  //  TestUtils.Simulate.change(this.inputElement, {target: {value: expectedText}});
+  //  this.inputElement.value.should.equal(expectedText);
+  //  //console.log(this.inputElement.value);
+  //});
+
   //it('sends a save request to the server when the content is changed', function () {
-  //
   //});
 
 });
