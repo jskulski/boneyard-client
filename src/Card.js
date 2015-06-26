@@ -9,9 +9,18 @@ var Card = React.createClass({
   },
 
   handleChange: function(event) {
-    console.log('yeah?');
-    console.log(event.target);
-    this.setState({value: event.target.value});
+
+    var nanoajax = require('nanoajax');
+    nanoajax.ajax({
+        url: '/card',
+        method: 'POST',
+        body: {body: event.target.value}
+      },
+      function() {
+        console.log('yeah?');
+      }
+    );
+
   },
 
   render: function() {
