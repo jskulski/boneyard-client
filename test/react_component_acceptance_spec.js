@@ -50,7 +50,6 @@ describe('Card Component', function () {
     req.requestBody.should.deep.equal({body: expectedText})
   });
 
-
   function _setup_xhr_spying() {
     global.XMLHttpRequest = sinon.FakeXMLHttpRequest;
 
