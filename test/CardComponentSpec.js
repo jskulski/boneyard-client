@@ -37,12 +37,14 @@ describe('Card Component', function () {
 
   it('should save the card when a user inputs text', function () {
     var expectedText = 'Hello there';
+    var card_repostior_original_save = CardRepository.save;
     CardRepository.save = sinon.spy();
 
     TestUtils.Simulate.change(this.inputElement, {target: {value: expectedText}});
     this.inputElement.value = expectedText;
 
     CardRepository.save.called.should.be.true;
+    CardRepository.save = card_repostior_original_save;
   });
 
 });

@@ -14,10 +14,9 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
-
 function _proxy_to_api(req, res, next) {
   var host = 'http://boneyard-server.heroku.com/';
   var api_url = url.resolve(host, req.path);
   request(api_url).pipe(res);
-};
+}
 
