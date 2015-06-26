@@ -2,6 +2,8 @@ var should = require('chai').should();
 var sinon = require('sinon');
 var XHRSpy = require('./XHRSpy');
 
+var urls = require('../config/Urls.js');
+
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
@@ -48,7 +50,7 @@ describe('Card Component', function () {
     var req = this.xhr.requests[0];
 
     req.method.should.equal('POST');
-    req.url.should.equal('/card');
+    req.url.should.equal(urls.NEW_CARD_ENDPOINT);
     req.requestBody.should.deep.equal({body: expectedText})
   });
 
