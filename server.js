@@ -1,12 +1,14 @@
 var static = require('node-static');
 var file = new static.Server('./build');
 
-require('http').createServer(function (request, response) {
+var port = process.env.PORT || 5000;
 
+require('http').createServer(function (request, response) {
 
   request.addListener('end', function () {
     file.serve(request, response);
   }).resume();
 
-}).listen(8080);
+}).listen(port);
+
 console.log('Listening on http://localhost:8080/');

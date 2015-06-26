@@ -3,5 +3,12 @@ language: node_js
 node_js: 0.12
 matrix:
   allow_failures:
-    - node_js: iojs
+  - node_js: iojs
 script: npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: sAFAC758pyCae6b5cM5TBdKE0dyLA5B/EPowFmZ3ygLMOdI+8gCGvnaD4D5GWMwYh8ciVMuLb0kaXUVaqc0uOAcKou9GHnJ36o4Y5fo4nN4QCX6pr+Ii1yupdOUW/X7HnQhpDXo70cvbOx3p5chjYh1R0AAh5ud3MeiFqSP/nknsUVu2BBORDfflvXQ++JHXEPX4tA19NNCESXtFUIZd7RlbcrROdNRWB/qjoTtrPByZLlkVajDOA54cD3lSDqvVVTl9irtAGEa8Mb5BtKBumKLxyuOyNwb95g9QchwohqIRdBHXWj5b62KHPi4BNM2/iKEEjp5CM7WfXUP6luVxgWq52jnS6ltjTH4yHqv2Hs/X1zGs15ktWDZh4MKxTbjLUAAVyBLhyjMcsYYdfsl7wlHWr2DTnEMvq5wyXZeHLm2SqHLPvi6oxAcylhfHdg5I5xLnCLz89uwwXDc7MxW0YXE8nazlsE+07FKbyrgPo4TaElWJ6vOqToOrsycotHyCynf9D7QHo8d5EUnCEayeZbgdXu1o1EKORXpFOA3jGZcpUl26uN11Z92YsLUA5M2dGcKYRa8Va0K/9BRAPIWQJ846PHlz84S94l8agy7xtceuhFRi5re7VumTZ6Vrfk7AQVPzvmnVHyayKzG+h8OPvadR/L1vqfz2Uj8+dmkLSZI=
+  app: boneyard-client
+  on:
+    repo: jskulski/boneyard-client
