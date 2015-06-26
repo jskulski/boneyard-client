@@ -13,7 +13,7 @@ var BoneyardApp = React.createClass({
 
 BoneyardApp.init = function() {
   React.render(
-    React.createElement(BoneyardApp),
+   React.createElement(BoneyardApp),
     document.getElementById('app')
   );
 };

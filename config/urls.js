@@ -1,6 +1,6 @@
+var url = require('url');
+
 module.exports = {
-
-  CARD_ENDPOINT: '/card',
-  CARDS_ENDPOINT: '/cards'
-
+  CARD_ENDPOINT: '/api/card',
+  CARDS_ENDPOINT: '/api/cards',
 };
