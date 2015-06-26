@@ -1,14 +1,14 @@
-var static = require('node-static');
-var file = new static.Server('./build');
+var express = require('express');
 
-var port = process.env.PORT || 5000;
+var app = express();
 
-require('http').createServer(function (request, response) {
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/build'));
 
-  request.addListener('end', function () {
-    file.serve(request, response);
-  }).resume();
+app.get('/api/*', function(request, response) {
+  response.send('proxy');
+});
 
-}).listen(port);
-
-console.log('Listening on http://localhost:8080/');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
