@@ -26,6 +26,7 @@
     "jsx-loader": "^0.13.2",
     "nanoajax": "^0.3.1",
     "react": "^0.13.3",
+    "request": "^2.58.0",
     "webpack": "^1.9.12"
   }
 }
