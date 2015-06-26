@@ -1,4 +1,5 @@
 var React = require('react');
+var CardRepository = require('./CardRepository');
 
 var Card = React.createClass({
 
@@ -9,18 +10,7 @@ var Card = React.createClass({
   },
 
   handleChange: function(event) {
-
-    var nanoajax = require('nanoajax');
-    nanoajax.ajax({
-        url: '/card',
-        method: 'POST',
-        body: {body: event.target.value}
-      },
-      function() {
-        console.log('yeah?');
-      }
-    );
-
+    CardRepository.save(event.target.value);
   },
 
   render: function() {
