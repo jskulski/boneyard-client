@@ -2,12 +2,13 @@ var should = require('chai').should();
 var sinon = require('sinon');
 var XHRSpy = require('./XHRSpy');
 
-var urls = require('../config/Urls.js');
+var urls = require('../config/urls.js');
 
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
 var Card = require('../src/Card');
+var CardRepository = require('../src/CardRepository');
 
 describe('Card Component', function () {
 
@@ -24,12 +25,6 @@ describe('Card Component', function () {
     );
 
     this.inputElement = inputComponent.getDOMNode();
-
-    this.xhr = new XHRSpy().enable();
-  });
-
-  afterEach(function (){
-    this.xhr.disable();
   });
 
   it('should have a textarea', function () {
@@ -40,18 +35,14 @@ describe('Card Component', function () {
     this.inputElement.value.should.equal(this.expectedBody)
   });
 
-  it('should send a xhr request when the user changes the card', function () {
+  it('should save the card when a user inputs text', function () {
     var expectedText = 'Hello there';
+    CardRepository.save = sinon.spy();
 
     TestUtils.Simulate.change(this.inputElement, {target: {value: expectedText}});
     this.inputElement.value = expectedText;
 
-    this.xhr.requests.length.should.equal(1);
-    var req = this.xhr.requests[0];
-
-    req.method.should.equal('POST');
-    req.url.should.equal(urls.NEW_CARD_ENDPOINT);
-    req.requestBody.should.deep.equal({body: expectedText})
+    CardRepository.save.called.should.be.true;
   });
 
 });

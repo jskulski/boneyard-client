@@ -1,11 +1,15 @@
 var nanoajax = require('nanoajax');
-var urls = require('../config/Urls');
+var urls = require('../config/urls');
 
 var CardRepository = {
 
+  retrieve: function() {
+    nanoajax.ajax(urls.CARDS_ENDPOINT);
+  },
+
   save: function(body) {
     nanoajax.ajax({
-        url: urls.NEW_CARD_ENDPOINT,
+        url: urls.CARD_ENDPOINT,
         method: 'POST',
         body: {body: body}
       },
