@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "nanoajax": "^0.3.1",
+    "node-static": "^0.7.6",
     "react": "^0.13.3"
   }
 }
