@@ -1,8 +1,21 @@
 var React = require('react');
-var BoneyardApp = require('./BoneyardApp');
+var Card = require('./Card');
 
-React.render(
-  React.createElement(BoneyardApp),
-  document.getElementById('app')
-);
+var BoneyardApp = React.createClass({
 
+  render: function() {
+    return (
+      <Card />
+    )
+  }
+
+});
+
+BoneyardApp.init = function() {
+  React.render(
+    React.createElement(BoneyardApp),
+    document.getElementById('app')
+  );
+};
+
+module.exports = BoneyardApp;
