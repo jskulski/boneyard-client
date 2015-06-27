@@ -1,0 +1,8 @@
+module.exports = {
+
+  retrievedCards: function() {
+
+  }
+
+
+};

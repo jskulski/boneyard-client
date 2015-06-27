@@ -4,6 +4,7 @@ var sinon = require('sinon');
 var XHRSpy = require('./XHRSpy');
 
 var urls = require('../config/urls');
+var Actions = require('../src/Actions');
 var CardRepository = require('../src/CardRepository');
 
 describe('Card Repository', function() {
@@ -37,5 +38,15 @@ describe('Card Repository', function() {
     req.url.should.equal(urls.CARD_ENDPOINT);
     req.requestBody.should.equal("body=" + expectedText);
   });
+
+  it('a successful retrieval sends a Card Data received action', function() {
+    sinon.stub(Actions, 'retrievedCards');
+
+    CardRepository.retrieve();
+
+    Actions.retrievedCards.calledOnce.should.be.true;
+
+    Actions.retrievedCards.restore();
+  })
 
 });

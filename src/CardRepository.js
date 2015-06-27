@@ -1,6 +1,8 @@
-var nanoajax = require('nanoajax');
+var Actions = require('./Actions');
 
 var urls = require('../config/urls');
+
+var nanoajax = require('nanoajax');
 
 var CardRepository = {
 
@@ -8,6 +10,7 @@ var CardRepository = {
     nanoajax.ajax(urls.CARDS_ENDPOINT, function() {
       // CardListRefreshedActionCreator.go();
     });
+    Actions.retrievedCards();
   },
 
   save: function(body) {
