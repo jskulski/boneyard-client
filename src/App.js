@@ -1,5 +1,6 @@
 var React = require('react');
 var Card = require('./Card');
+var CardRepository = require('./CardRepository');
 
 var BoneyardApp = React.createClass({
 
@@ -12,6 +13,9 @@ var BoneyardApp = React.createClass({
 });
 
 BoneyardApp.init = function() {
+
+  CardRepository.retrieve();
+
   React.render(
    React.createElement(BoneyardApp),
     document.getElementById('app')
