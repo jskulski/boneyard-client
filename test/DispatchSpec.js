@@ -14,13 +14,10 @@ describe('Dispatch', function () {
     Actions.retrievedCards(expectedText);
 
     spy.calledOnce.should.be.true;
-    //spy.calledWith({actionType: ActionTypes.CARD_RETRIEVED})
-
-
-
-
-
-
+    spy.calledWith({
+      actionType: ActionTypes.CARD_RETRIEVED,
+      cardText: expectedText
+    }).should.be.true;
   });
 
 });
