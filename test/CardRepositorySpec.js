@@ -35,7 +35,7 @@ describe('Card Repository', function() {
 
     req.method.should.equal('POST');
     req.url.should.equal(urls.CARD_ENDPOINT);
-    req.requestBody.should.deep.equal({body: expectedText})
+    req.requestBody.should.equal("body=" + expectedText);
   });
 
 });
