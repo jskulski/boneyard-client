@@ -13,11 +13,10 @@ var BoneyardApp = React.createClass({
 });
 
 BoneyardApp.init = function() {
-
   CardRepository.retrieve();
 
   React.render(
-   React.createElement(BoneyardApp),
+    React.createElement(BoneyardApp),
     document.getElementById('app')
   );
 };

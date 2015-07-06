@@ -7,10 +7,12 @@ var nanoajax = require('nanoajax');
 var CardRepository = {
 
   retrieve: function() {
-    nanoajax.ajax(urls.CARDS_ENDPOINT, function() {
-      // CardListRefreshedActionCreator.go();
+    nanoajax.ajax(urls.CARDS_ENDPOINT, function(code, responseText) {
+      if (code == 200) {
+        var parsedPayload = JSON.parse(responseText);
+        Actions.retrievedCards(parsedPayload[0].body);
+      }
     });
-    Actions.retrievedCards();
   },
 
   save: function(body) {

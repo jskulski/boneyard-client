@@ -19,5 +19,4 @@ describe('Dispatch', function () {
       cardText: expectedText
     }).should.be.true;
   });
-
 });

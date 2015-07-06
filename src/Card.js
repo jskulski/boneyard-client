@@ -23,4 +23,13 @@ var Card = React.createClass({
   }
 });
 
+var store = '';
+
+// Store?
+var Dispatch = require('./Dispatch');
+Dispatch.register(function(payload) {
+  store = payload.cardText;
+  // TODO: emit event so component can react
+});
+
 module.exports = Card;

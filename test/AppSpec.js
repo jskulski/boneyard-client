@@ -18,13 +18,13 @@ describe('App initialization', function() {
   });
 
   it('should ask the card repository for initial card list', function() {
-    var oldRetrieve = CardRepository.retrieve;
-    CardRepository.retrieve = sinon.spy();
+    sinon.stub(CardRepository, 'retrieve');
 
     App.init();
 
     CardRepository.retrieve.calledOnce.should.be.true;
-    CardRepository.retrieve = oldRetrieve;
+    CardRepository.retrieve.restore();
   });
+
 
 });

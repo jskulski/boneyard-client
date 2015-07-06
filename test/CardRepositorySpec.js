@@ -44,9 +44,15 @@ describe('Card Repository', function() {
 
     CardRepository.retrieve();
 
+    this.xhr.requests[0].respond(
+      200,
+      {"Content-Type": "application/json"},
+      '[{ "body": "expected text" }]'
+    );
+
     Actions.retrievedCards.calledOnce.should.be.true;
 
     Actions.retrievedCards.restore();
-  })
+  });
 
 });

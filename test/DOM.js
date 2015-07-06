@@ -5,7 +5,7 @@ module.exports = {
     global.document = jsdom.jsdom(
       '<!doctype html><html><body><div id="app"></div></body></html>'
     );
-    global.window = document.parentWindow;
+    global.window = global.document.parentWindow;
     global.navigator = global.window.navigator;
   }
 };
