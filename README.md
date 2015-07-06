@@ -1,5 +1,7 @@
 # Boneyard-Client
 
+[![Build Status](https://travis-ci.org/jskulski/boneyard-client.svg?branch=master)](https://travis-ci.org/jskulski/boneyard-client)
+
 # Run Development Server
 
 npm run-script serve:dev
