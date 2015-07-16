@@ -1,5 +1,6 @@
 var React = require('react');
 var CardRepository = require('./CardRepository');
+var CardStore = require('./CardStore');
 
 var Card = React.createClass({
 
@@ -7,6 +8,10 @@ var Card = React.createClass({
     return {
       'body': this.props.body
     }
+  },
+
+  componentDidMount: function() {
+    CardStore.addChangeListener();
   },
 
   handleChange: function(event) {
@@ -23,13 +28,11 @@ var Card = React.createClass({
   }
 });
 
-var store = '';
 
 // Store?
 var Dispatch = require('./Dispatch');
 Dispatch.register(function(payload) {
-  store = payload.cardText;
-  // TODO: emit event so component can react
+  CardStore.updateCard(payload.cardText);
 });
 
 module.exports = Card;

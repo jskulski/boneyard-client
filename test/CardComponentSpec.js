@@ -50,25 +50,33 @@ describe('Card Component', function () {
     CardRepository.save = card_repostiory_original_save;
   });
 
-  // This is functionally incomplete. Need event emitter or something so that when
-  // 'store' is updated, component can react. - JSK
-  //
+  it('adds a change listener to the CardStore when component is added to DOM', function() {
+    var CardStore = require('../src/CardStore');
+    sinon.spy(CardStore, 'addChangeListener');
+
+    var component = TestUtils.renderIntoDocument(
+      <Card body={this.expectedBody} />
+    );
+
+    CardStore.addChangeListener.called.should.be.true;
+    CardStore.addChangeListener.restore();
+  });
+
   //it('component is updated with card text when updated card action received', function () {
-  //  this.xhr.enable();
+  // this.xhr.enable();
   //
-  //  var expectedText = 'hi this is the expected test';
-  //  CardRepository.retrieve();
+  // var expectedText = 'hi this is the expected test';
+  // CardRepository.retrieve();
   //
-  //  this.xhr.requests.length.should.equal(1);
-  //  this.xhr.requests[0].respond(
-  //    200,
-  //    {"Content-Type": "application/json"},
-  //    '[{ "body": "'+ expectedText +'"}]'
-  //  );
+  // this.xhr.requests.length.should.equal(1);
+  // this.xhr.requests[0].respond(
+  //   200,
+  //   {"Content-Type": "application/json"},
+  //   '[{ "body": "'+ expectedText +'"}]'
+  // );
   //
-  //  this.component.state.body.should.equal(expectedText);
+  // this.component.state.body.should.equal(expectedText);
   //
-  //  this.xhr.disable();
+  // this.xhr.disable();
   //});
 });
-
