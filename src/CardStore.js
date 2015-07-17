@@ -1,4 +1,4 @@
-var fjs = require('functional.js');
+var f = require('functional.js');
 var Dispatch = require('./Dispatch');
 
 var CardStore = function() {
@@ -27,11 +27,11 @@ CardStore.prototype.addCard = function (card) {
 
 CardStore.prototype.addCards = function (cards) {
   Array.prototype.push.apply(this.cards, cards);
-  this.setCurrentCardById(fjs.last("x => true", this.cards).id);
+  this.setCurrentCardById(f.last("x => true", this.cards).id);
 };
 
 CardStore.prototype.getCardById = function (id) {
-  return fjs.first(function(x) { return x.id == id }, this.cards);
+  return f.first(function(x) { return x.id == id }, this.cards);
 };
 
 CardStore.prototype.setCards = function(cards) {
