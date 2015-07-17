@@ -12,6 +12,11 @@ CardStore.prototype.getCardText = function () {
   return this.card;
 };
 
+CardStore.prototype.setCardText = function (cardText) {
+  this.card = cardText;
+};
+
+
 CardStore.prototype.addChangeListener = function(f) {
   if (typeof f == 'function') {
     this._listeners.push(f);

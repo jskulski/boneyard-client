@@ -15,10 +15,11 @@ var CardStore = require('../src/CardStore');
 describe('Card Component', function () {
 
   beforeEach(function () {
-    this.expectedBody = "This is the body";
+    this.expectedCardText = "This is the body";
+    CardStore.setCardText(this.expectedCardText);
 
     this.component = TestUtils.renderIntoDocument(
-      <Card body={this.expectedBody} />
+      <Card />
     );
 
     var inputComponent = TestUtils.findRenderedDOMComponentWithTag(
@@ -36,7 +37,7 @@ describe('Card Component', function () {
   });
 
   it('should display the data set in the CardStore', function () {
-    this.inputElement.value.should.equal(this.expectedBody)
+    this.inputElement.value.should.equal(this.expectedCardText)
   });
 
   it('should save the card when a user inputs text', function () {
@@ -55,7 +56,7 @@ describe('Card Component', function () {
     sinon.spy(CardStore, 'addChangeListener');
 
     var component = TestUtils.renderIntoDocument(
-      <Card body={this.expectedBody} />
+      <Card />
     );
 
     CardStore.addChangeListener.called.should.be.true;
@@ -65,7 +66,7 @@ describe('Card Component', function () {
   it('updates when a CardStore is updated', function () {
     var expectedText = 'this is the new text';
     var component = TestUtils.renderIntoDocument(
-      <Card body="this is the old text" />
+      <Card />
     );
 
     CardStore.updateCard(expectedText);

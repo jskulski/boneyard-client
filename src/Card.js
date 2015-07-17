@@ -11,9 +11,7 @@ function getStateFromStores() {
 var Card = React.createClass({
 
   getInitialState: function() {
-    return {
-      'body': this.props.body
-    }
+    return getStateFromStores();
   },
 
   componentDidMount: function() {
