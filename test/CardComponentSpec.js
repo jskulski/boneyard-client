@@ -8,7 +8,7 @@ var urls = require('../config/urls.js');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-var Card = require('../src/Card');
+var Card = require('../src/Card.react');
 var CardRepository = require('../src/CardRepository');
 var CardStore = require('../src/CardStore');
 
@@ -91,4 +91,5 @@ describe('Card Component', function () {
 
    this.xhr.disable();
   });
+
 });

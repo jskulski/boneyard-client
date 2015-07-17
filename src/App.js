@@ -1,5 +1,5 @@
 var React = require('react');
-var Card = require('./Card');
+var Card = require('./Card.react');
 var CardRepository = require('./CardRepository');
 
 var BoneyardApp = React.createClass({

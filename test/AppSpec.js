@@ -26,5 +26,4 @@ describe('App initialization', function() {
     CardRepository.retrieve.restore();
   });
 
-
 });

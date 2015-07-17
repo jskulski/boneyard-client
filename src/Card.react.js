@@ -36,6 +36,7 @@ var Card = React.createClass({
       </label>
     );
   }
+
 });
 
 module.exports = Card;

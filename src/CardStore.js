@@ -3,6 +3,7 @@ var Dispatch = require('./Dispatch');
 var CardStore = function() {
   this._listeners = [];
   this.card = '';
+  this.cards = [];
 };
 
 CardStore.prototype.updateCard = function(cardText) {
@@ -18,6 +19,21 @@ CardStore.prototype.setCardText = function (cardText) {
   this.card = cardText;
 };
 
+CardStore.prototype.addCard = function (card) {
+  this.cards.push(card);
+};
+
+CardStore.prototype.addCards = function (cards) {
+  Array.prototype.push.apply(this.cards, cards);
+};
+
+CardStore.prototype.getCardById = function (id) {
+  return this.cards[id];
+};
+
+CardStore.prototype.setCards = function(cards) {
+  this.cards = cards;
+}
 
 CardStore.prototype.addChangeListener = function(f) {
   if (typeof f == 'function') {
