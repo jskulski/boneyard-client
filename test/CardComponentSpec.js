@@ -74,21 +74,21 @@ describe('Card Component', function () {
     component.state.body.should.equal(expectedText);
   });
 
-  //it('is updated with card text when updated card action received', function () {
-  // this.xhr.enable();
-  //
-  // var expectedText = 'hi this is the expected test';
-  // CardRepository.retrieve();
-  //
-  // this.xhr.requests.length.should.equal(1);
-  // this.xhr.requests[0].respond(
-  //   200,
-  //   {"Content-Type": "application/json"},
-  //   '[{ "body": "'+ expectedText +'"}]'
-  // );
-  //
-  // this.component.state.body.should.equal(expectedText);
-  //
-  // this.xhr.disable();
-  //});
+  it('is updated with card text when updated card action received', function () {
+   this.xhr.enable();
+
+   var expectedText = 'hi this is the expected test';
+   CardRepository.retrieve();
+
+   this.xhr.requests.length.should.equal(1);
+   this.xhr.requests[0].respond(
+     200,
+     {"Content-Type": "application/json"},
+     '[{ "body": "'+ expectedText +'"}]'
+   );
+
+   this.component.state.body.should.equal(expectedText);
+
+   this.xhr.disable();
+  });
 });
