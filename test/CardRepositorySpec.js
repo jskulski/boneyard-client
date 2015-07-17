@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var XHRSpy = require('./XHRSpy');
 
 var urls = require('../config/urls');
-var Actions = require('../src/CardServerActionCreator');
+var CardServerActionCreator = require('../src/CardServerActionCreator');
 var CardRepository = require('../src/CardRepository');
 
 describe('Card Repository', function() {
@@ -40,7 +40,7 @@ describe('Card Repository', function() {
   });
 
   it('a successful retrieval sends a Card Data received action', function() {
-    sinon.stub(Actions, 'retrievedCards');
+    sinon.stub(CardServerActionCreator, 'retrievedCards');
 
     CardRepository.retrieve();
 
@@ -50,9 +50,9 @@ describe('Card Repository', function() {
       '[{ "body": "expected text" }]'
     );
 
-    Actions.retrievedCards.calledOnce.should.be.true;
+    CardServerActionCreator.retrievedCards.calledOnce.should.be.true;
 
-    Actions.retrievedCards.restore();
+    CardServerActionCreator.retrievedCards.restore();
   });
 
 });

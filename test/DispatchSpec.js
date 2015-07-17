@@ -1,5 +1,5 @@
 var Dispatch = require('../src/Dispatch');
-var Actions = require('../src/CardServerActionCreator');
+var CardServerActionCreator = require('../src/CardServerActionCreator');
 var ActionTypes = require('../src/ActionTypes');
 
 var should = require('chai').should();
@@ -11,7 +11,7 @@ describe('Dispatch', function () {
     var spy = sinon.spy();
     Dispatch.register(spy);
 
-    Actions.retrievedCards(expectedText);
+    CardServerActionCreator.retrievedCards(expectedText);
 
     spy.calledOnce.should.be.true;
     spy.calledWith({

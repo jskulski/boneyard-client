@@ -1,4 +1,4 @@
-var Actions = require('./CardServerActionCreator');
+var CardServerActionCreator = require('./CardServerActionCreator');
 
 var urls = require('../config/urls');
 
@@ -10,7 +10,7 @@ var CardRepository = {
     nanoajax.ajax(urls.CARDS_ENDPOINT, function(code, responseText) {
       if (code == 200) {
         var parsedPayload = JSON.parse(responseText);
-        Actions.retrievedCards(parsedPayload[0].body);
+        CardServerActionCreator.retrievedCards(parsedPayload[0].body);
       }
     });
   },
