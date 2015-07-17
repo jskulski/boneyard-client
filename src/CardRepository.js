@@ -1,4 +1,4 @@
-var Actions = require('./Actions');
+var Actions = require('./CardServerActionCreator');
 
 var urls = require('../config/urls');
 

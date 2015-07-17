@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var XHRSpy = require('./XHRSpy');
 
 var urls = require('../config/urls');
-var Actions = require('../src/Actions');
+var Actions = require('../src/CardServerActionCreator');
 var CardRepository = require('../src/CardRepository');
 
 describe('Card Repository', function() {

@@ -1,5 +1,5 @@
 var Dispatch = require('../src/Dispatch');
-var Actions = require('../src/Actions');
+var Actions = require('../src/CardServerActionCreator');
 var ActionTypes = require('../src/ActionTypes');
 
 var should = require('chai').should();

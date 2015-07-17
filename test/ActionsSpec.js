@@ -1,7 +1,7 @@
 var should = require('chai').should();
 var sinon = require('sinon');
 
-var Actions = require('../src/Actions');
+var Actions = require('../src/CardServerActionCreator');
 var ActionTypes = require('../src/ActionTypes');
 var Dispatcher = require('../src/Dispatch');
 
