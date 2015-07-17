@@ -1,3 +1,4 @@
 module.exports = {
-  CARD_RETRIEVED: "CARD RETRIEVED"
+  CARD_RETRIEVED: 0,
+  CARD_UPDATED: 1
 };

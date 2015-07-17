@@ -2,6 +2,8 @@ var React = require('react');
 var CardRepository = require('./CardRepository');
 var CardStore = require('./CardStore');
 
+var CardUpdateActionCreator = require('./CardUpdateActionCreator');
+
 function getStateFromStores() {
   return {
     body: CardStore.getCardText()
@@ -35,13 +37,6 @@ var Card = React.createClass({
       </label>
     );
   }
-});
-
-
-// Store?
-var Dispatch = require('./Dispatch');
-Dispatch.register(function(payload) {
-  CardStore.updateCard(payload.cardText);
 });
 
 module.exports = Card;

@@ -1,3 +1,5 @@
+var Dispatch = require('./Dispatch');
+
 var CardStore = function() {
   this._listeners = [];
   this.card = '';
@@ -29,5 +31,11 @@ CardStore.prototype.emitChange = function () {
   }
 };
 
-module.exports = new CardStore();
+var cardStore = new CardStore();
 
+Dispatch.register(function(payload) {
+  cardStore.updateCard(payload.cardText);
+});
+
+
+module.exports = cardStore;
