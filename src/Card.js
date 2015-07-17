@@ -2,6 +2,12 @@ var React = require('react');
 var CardRepository = require('./CardRepository');
 var CardStore = require('./CardStore');
 
+function getStateFromStores() {
+  return {
+    body: CardStore.getCardText()
+  }
+}
+
 var Card = React.createClass({
 
   getInitialState: function() {
@@ -11,10 +17,15 @@ var Card = React.createClass({
   },
 
   componentDidMount: function() {
-    CardStore.addChangeListener();
+    CardStore.addChangeListener(this.handleStoreEvent);
+  },
+
+  handleStoreEvent: function() {
+    this.setState(getStateFromStores());
   },
 
   handleChange: function(event) {
+    // We want this to happen through actions
     CardRepository.save(event.target.value);
   },
 

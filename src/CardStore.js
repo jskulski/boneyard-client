@@ -5,6 +5,11 @@ var CardStore = function() {
 
 CardStore.prototype.updateCard = function(cardText) {
   this.card = cardText;
+  this.emitChange()
+};
+
+CardStore.prototype.getCardText = function () {
+  return this.card;
 };
 
 CardStore.prototype.addChangeListener = function(f) {

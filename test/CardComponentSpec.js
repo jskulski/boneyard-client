@@ -10,6 +10,7 @@ var TestUtils = React.addons.TestUtils;
 
 var Card = require('../src/Card');
 var CardRepository = require('../src/CardRepository');
+var CardStore = require('../src/CardStore');
 
 describe('Card Component', function () {
 
@@ -34,7 +35,7 @@ describe('Card Component', function () {
     this.inputElement.tagName.should.equal('TEXTAREA');
   });
 
-  it('should display the current card data', function () {
+  it('should display the data set in the CardStore', function () {
     this.inputElement.value.should.equal(this.expectedBody)
   });
 
@@ -51,7 +52,6 @@ describe('Card Component', function () {
   });
 
   it('adds a change listener to the CardStore when component is added to DOM', function() {
-    var CardStore = require('../src/CardStore');
     sinon.spy(CardStore, 'addChangeListener');
 
     var component = TestUtils.renderIntoDocument(
@@ -62,7 +62,18 @@ describe('Card Component', function () {
     CardStore.addChangeListener.restore();
   });
 
-  //it('component is updated with card text when updated card action received', function () {
+  it('updates when a CardStore is updated', function () {
+    var expectedText = 'this is the new text';
+    var component = TestUtils.renderIntoDocument(
+      <Card body="this is the old text" />
+    );
+
+    CardStore.updateCard(expectedText);
+
+    component.state.body.should.equal(expectedText);
+  });
+
+  //it('is updated with card text when updated card action received', function () {
   // this.xhr.enable();
   //
   // var expectedText = 'hi this is the expected test';
