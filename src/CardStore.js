@@ -1,9 +1,11 @@
+var fjs = require('functional.js');
 var Dispatch = require('./Dispatch');
 
 var CardStore = function() {
   this._listeners = [];
   this.card = '';
   this.cards = [];
+  this.current_card_id = 0;
 };
 
 CardStore.prototype.updateCard = function(cardText) {
@@ -25,15 +27,24 @@ CardStore.prototype.addCard = function (card) {
 
 CardStore.prototype.addCards = function (cards) {
   Array.prototype.push.apply(this.cards, cards);
+  this.setCurrentCardById(fjs.last("x => true", this.cards).id);
 };
 
 CardStore.prototype.getCardById = function (id) {
-  return this.cards[id];
+  return fjs.first(function(x) { return x.id == id }, this.cards);
 };
 
 CardStore.prototype.setCards = function(cards) {
   this.cards = cards;
-}
+};
+
+CardStore.prototype.getCurrentCard = function () {
+  return this.getCardById(this.current_card_id);
+};
+
+CardStore.prototype.setCurrentCardById = function (id) {
+  this.current_card_id = id;
+};
 
 CardStore.prototype.addChangeListener = function(f) {
   if (typeof f == 'function') {

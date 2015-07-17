@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "^4.13.0",
     "flux": "^2.0.3",
+    "functional.js": "^0.6.16",
     "http-proxy": "^1.11.1",
     "jsx-loader": "^0.13.2",
     "nanoajax": "^0.3.1",
