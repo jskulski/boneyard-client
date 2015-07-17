@@ -32,9 +32,20 @@ CardStore.prototype.emitChange = function () {
 };
 
 var cardStore = new CardStore();
+var ActionTypes = require('./ActionTypes');
+var CardRepository = require('./CardRepository');
+
 
 Dispatch.register(function(payload) {
-  cardStore.updateCard(payload.cardText);
+  switch(payload.actionType) {
+    case ActionTypes.CARD_UPDATED:
+      CardRepository.save(payload.cardText);
+      break;
+
+    case ActionTypes.CARD_RETRIEVED:
+      cardStore.updateCard(payload.cardText);
+      break;
+  }
 });
 
 

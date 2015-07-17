@@ -25,8 +25,7 @@ var Card = React.createClass({
   },
 
   handleChange: function(event) {
-    // We want this to happen through actions
-    CardRepository.save(event.target.value);
+    CardUpdateActionCreator.cardUpdated(event.target.value);
   },
 
   render: function() {
