@@ -14,7 +14,6 @@ CardStore.prototype.addChangeListener = function(f) {
 };
 
 CardStore.prototype.emitChange = function () {
-  console.log(this._listeners);
   for (var i = 0; i < this._listeners.length; i++) {
     this._listeners[i].apply(this);
   }

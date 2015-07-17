@@ -11,7 +11,6 @@ describe('Card Store', function () {
   });
 
   it ('should emit an event to an registered listener', function () {
-    console.log('this runnin?');
     var spy = sinon.spy();
     CardStore.addChangeListener(spy);
 
