@@ -42,6 +42,12 @@ CardStore.prototype.getCurrentCard = function () {
   return this.getCardById(this.current_card_id);
 };
 
+CardStore.prototype.nextCard = function () {
+  //this.setCurrentCardById();
+  var index = this.cards.indexOf(this.getCurrentCard());
+  this.setCurrentCardById(this.cards[index + 1].id)
+};
+
 CardStore.prototype.setCurrentCardById = function (id) {
   this.current_card_id = id;
 };

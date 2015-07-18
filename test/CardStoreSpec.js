@@ -59,5 +59,14 @@ describe('Card Store', function () {
     CardStore.getCurrentCard().should.equal(this.mockCards[1]);
   });
 
+  it('can select the next card in the ring', function() {
+    CardStore.addCards(this.mockCards);
+    CardStore.setCurrentCardById(this.mockCards[1].id);
+
+    CardStore.nextCard();
+
+    CardStore.getCurrentCard().should.equal(this.mockCards[2]);
+  });
+
 });
 
