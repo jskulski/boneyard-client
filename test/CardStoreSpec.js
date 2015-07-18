@@ -68,5 +68,19 @@ describe('Card Store', function () {
     CardStore.getCurrentCard().should.equal(this.mockCards[2]);
   });
 
+  it('loops to the first card on next at last', function () {
+    CardStore.addCards(this.mockCards);
+    var last = this.mockCards.length - 1;
+    CardStore.setCurrentCardById(this.mockCards[last].id);
+
+    CardStore.nextCard();
+
+    CardStore.getCurrentCard().should.equal(this.mockCards[0]);
+  });
+
+  it('can select previous card in ring', function () {
+
+  });
+
 });
 
