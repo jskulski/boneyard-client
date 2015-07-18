@@ -46,10 +46,20 @@ CardStore.prototype.isLast = function(index) {
   return index >= this.cards.length - 1;
 };
 
+CardStore.prototype.isFirst = function(index) {
+  return index <= 0;
+};
+
+CardStore.prototype.previousCard = function () {
+  var last = this.cards.length - 1;
+  var index = this.cards.indexOf(this.getCurrentCard());
+  var prev = this.isFirst(index) ? last : index - 1;
+  this.setCurrentCardById(this.cards[prev].id);
+};
+
 CardStore.prototype.nextCard = function () {
   var index = this.cards.indexOf(this.getCurrentCard());
-  var isLast = this.isLast.call(this, index);
-  var next = isLast ? 0 : index + 1;
+  var next = this.isLast(index) ? 0 : index + 1;
   this.setCurrentCardById(this.cards[next].id)
 };
 

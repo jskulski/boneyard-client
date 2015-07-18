@@ -69,8 +69,8 @@ describe('Card Store', function () {
   });
 
   it('loops to the first card on next at last', function () {
-    CardStore.addCards(this.mockCards);
     var last = this.mockCards.length - 1;
+    CardStore.addCards(this.mockCards);
     CardStore.setCurrentCardById(this.mockCards[last].id);
 
     CardStore.nextCard();
@@ -79,7 +79,22 @@ describe('Card Store', function () {
   });
 
   it('can select previous card in ring', function () {
+    CardStore.addCards(this.mockCards);
+    CardStore.setCurrentCardById(this.mockCards[1].id);
 
+    CardStore.previousCard();
+
+    CardStore.getCurrentCard().should.equal(this.mockCards[0]);
+  });
+
+  it('loops to the end on previous at first card', function() {
+    var last = this.mockCards.length - 1;
+    CardStore.addCards(this.mockCards);
+    CardStore.setCurrentCardById(this.mockCards[0].id);
+
+    CardStore.previousCard();
+
+    CardStore.getCurrentCard().should.equal(this.mockCards[last]);
   });
 
 });
