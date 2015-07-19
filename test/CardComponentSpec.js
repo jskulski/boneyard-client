@@ -10,7 +10,7 @@ var TestUtils = React.addons.TestUtils;
 
 var Card = require('../src/Card.react');
 var CardRepository = require('../src/CardRepository');
-var CardStore = require('../src/CardStore');
+var CardStore = require('../src/CardStore').instance;
 
 describe('Card Component', function () {
 

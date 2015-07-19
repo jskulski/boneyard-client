@@ -1,6 +1,6 @@
 var React = require('react');
 var CardRepository = require('./CardRepository');
-var CardStore = require('./CardStore');
+var CardStore = require('./CardStore').instance;
 
 var CardUpdateActionCreator = require('./CardUpdateActionCreator');
 

@@ -6,7 +6,7 @@ var CardStore = require('../src/CardStore');
 describe('Card Store', function () {
 
   beforeEach(function() {
-    CardStore.setCards([]);
+    this.cardStore = new CardStore();
     this.mockCards = [
       { id: 192, text: 'this is card one'   },
       { id: 292, text: 'this is card two'   },
@@ -14,88 +14,86 @@ describe('Card Store', function () {
     ];
   });
 
-  it('should be a full global object i suppose', function () {
-    CardStore.should.be.a.CardStore;
-  });
-
   it ('should emit an event to an registered listener', function () {
     var spy = sinon.spy();
-    CardStore.addChangeListener(spy);
+    this.cardStore.addChangeListener(spy);
 
-    CardStore.emitChange();
+    this.cardStore.emitChange();
 
     spy.called.should.be.true;
   });
 
   it('should be able to have a card added', function() {
-    CardStore.addCard(this.mockCards[0]);
+    this.cardStore.addCard(this.mockCards[0]);
   });
 
   it('should choose the last card by default as the current card', function() {
-    CardStore.addCards(this.mockCards);
+    this.cardStore.addCards(this.mockCards);
 
-    var actualCard = CardStore.getCurrentCard();
+    var actualCard = this.cardStore.getCurrentCard();
 
     actualCard.should.equal(this.mockCards[2]);
   });
 
   it('should be able to have multiple cards added', function () {
-    CardStore.addCards(this.mockCards);
+    this.cardStore.addCards(this.mockCards);
   });
 
   it('should be able to retrieve a card from many', function() {
-    CardStore.addCards(this.mockCards);
+    this.cardStore.addCards(this.mockCards);
 
-    var actualCard = CardStore.getCardById(this.mockCards[2].id);
+    var actualCard = this.cardStore.getCardById(this.mockCards[2].id);
 
     actualCard.should.equal(this.mockCards[2]);
   });
 
   it('can select a new current card by id', function() {
-    CardStore.addCards(this.mockCards);
+    this.cardStore.addCards(this.mockCards);
 
-    CardStore.setCurrentCardById(this.mockCards[1].id);
+    this.cardStore.setCurrentCardById(this.mockCards[1].id);
 
-    CardStore.getCurrentCard().should.equal(this.mockCards[1]);
+    this.cardStore.getCurrentCard().should.equal(this.mockCards[1]);
   });
 
   it('can select the next card in the ring', function() {
-    CardStore.addCards(this.mockCards);
-    CardStore.setCurrentCardById(this.mockCards[1].id);
+    this.cardStore.addCards(this.mockCards);
+    this.cardStore.setCurrentCardById(this.mockCards[1].id);
 
-    CardStore.nextCard();
+    this.cardStore.nextCard();
 
-    CardStore.getCurrentCard().should.equal(this.mockCards[2]);
+    this.cardStore.getCurrentCard().should.equal(this.mockCards[2]);
   });
 
   it('loops to the first card on next at last', function () {
     var last = this.mockCards.length - 1;
-    CardStore.addCards(this.mockCards);
-    CardStore.setCurrentCardById(this.mockCards[last].id);
+    this.cardStore.addCards(this.mockCards);
+    this.cardStore.setCurrentCardById(this.mockCards[last].id);
 
-    CardStore.nextCard();
+    this.cardStore.nextCard();
 
-    CardStore.getCurrentCard().should.equal(this.mockCards[0]);
+    this.cardStore.getCurrentCard().should.equal(this.mockCards[0]);
   });
 
   it('can select previous card in ring', function () {
-    CardStore.addCards(this.mockCards);
-    CardStore.setCurrentCardById(this.mockCards[1].id);
+    this.cardStore.addCards(this.mockCards);
+    this.cardStore.setCurrentCardById(this.mockCards[1].id);
 
-    CardStore.previousCard();
+    this.cardStore.previousCard();
 
-    CardStore.getCurrentCard().should.equal(this.mockCards[0]);
+    this.cardStore.getCurrentCard().should.equal(this.mockCards[0]);
   });
 
   it('loops to the end on previous at first card', function() {
     var last = this.mockCards.length - 1;
-    CardStore.addCards(this.mockCards);
-    CardStore.setCurrentCardById(this.mockCards[0].id);
+    this.cardStore.addCards(this.mockCards);
+    this.cardStore.setCurrentCardById(this.mockCards[0].id);
 
-    CardStore.previousCard();
+    this.cardStore.previousCard();
 
-    CardStore.getCurrentCard().should.equal(this.mockCards[last]);
+    this.cardStore.getCurrentCard().should.equal(this.mockCards[last]);
   });
+
+
 
 });
 

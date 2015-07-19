@@ -34,10 +34,6 @@ CardStore.prototype.getCardById = function (id) {
   return f.first(function(x) { return x.id == id }, this.cards);
 };
 
-CardStore.prototype.setCards = function(cards) {
-  this.cards = cards;
-};
-
 CardStore.prototype.getCurrentCard = function () {
   return this.getCardById(this.current_card_id);
 };
@@ -97,4 +93,5 @@ Dispatch.register(function(payload) {
 });
 
 
-module.exports = cardStore;
+module.exports = CardStore;
+module.exports.instance = cardStore;
