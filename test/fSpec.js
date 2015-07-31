@@ -1,4 +1,3 @@
-var f = require('functional.js');
 var r = require('ramda');
 
 var should = require('chai').should();
