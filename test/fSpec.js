@@ -2,7 +2,6 @@ var r = require('ramda');
 
 var should = require('chai').should();
 
-
 var Card = function(text) {
   this.text = text;
 };
@@ -37,9 +36,11 @@ function addCard(cards) {
 function deleteCard(cards) {
   return r.tail(cards);
 }
+
 function assertEquals(expected_cards, actual_cards) {
   r.equals(expected_cards, actual_cards).should.be.true;
 }
+
 describe('card ring', function() {
 
   it('can select the next card in a list of cards', function() {
@@ -135,7 +136,5 @@ describe('card ring', function() {
 
     assertEquals(expected_cards, actual_cards);
   })
-
-
 
 });
