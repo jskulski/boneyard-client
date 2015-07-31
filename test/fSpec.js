@@ -1,41 +1,12 @@
 var r = require('ramda');
 
+var CardsRing = require('../src/CardsRing');
+var Card = require('../src/Card');
+var card = Card.new;
+
+
 var should = require('chai').should();
 
-var Card = function(text) {
-  this.text = text;
-};
-Card.DEFAULT_TEXT = '';
-Card.prototype = {
-  equals: function(card) {
-    return card.text == this.text;
-  }
-};
-var card = function(text) { return new Card(text) };
-
-var nextCard = function(cards) {
-  if (cards.length == 1) {
-    return cards;
-  }
-
-  return r.append(r.head(cards), r.tail(cards))
-};
-
-function prevCard(cards) {
-  if (cards.length == 1) {
-    return cards;
-  }
-
-  return r.prepend(r.last(cards), r.init(cards));
-}
-
-function addCard(cards) {
-  return r.prepend(card(Card.DEFAULT_TEXT), cards)
-}
-
-function deleteCard(cards) {
-  return r.tail(cards);
-}
 
 function assertEquals(expected_cards, actual_cards) {
   r.equals(expected_cards, actual_cards).should.be.true;
@@ -51,7 +22,7 @@ describe('card ring', function() {
       card('4')
     ];
 
-    var actual_cards = nextCard(cards);
+    var actual_cards = CardsRing.nextCard(cards);
 
     var expected_cards = [
       card('2'),
@@ -67,7 +38,7 @@ describe('card ring', function() {
     var mock_cards = [ card('1') ];
     var expected_cards = [ card('1') ];
 
-    var actual_cards = nextCard(mock_cards);
+    var actual_cards = CardsRing.nextCard(mock_cards);
 
     assertEquals(expected_cards, actual_cards);
   });
@@ -76,7 +47,7 @@ describe('card ring', function() {
     var mock_cards = [ card('1') ];
     var expected_cards = [ card('1') ];
 
-    var actual_cards = prevCard(mock_cards);
+    var actual_cards = CardsRing.prevCard(mock_cards);
 
     assertEquals(expected_cards, actual_cards);
   });
@@ -96,7 +67,7 @@ describe('card ring', function() {
       card('3')
     ];
 
-    var actual_cards = prevCard(cards);
+    var actual_cards = CardsRing.prevCard(cards);
 
     assertEquals(expected_cards, actual_cards);
   });
@@ -114,7 +85,7 @@ describe('card ring', function() {
       card('4')
     ];
 
-    var actual_cards = addCard(mock_cards);
+    var actual_cards = CardsRing.addCard(mock_cards);
 
     assertEquals(expected_cards, actual_cards);
   });
@@ -132,7 +103,7 @@ describe('card ring', function() {
       card('4')
     ];
 
-    var actual_cards = deleteCard(mock_cards);
+    var actual_cards = CardsRing.deleteCard(mock_cards);
 
     assertEquals(expected_cards, actual_cards);
   })
